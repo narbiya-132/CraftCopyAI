@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f5ef">
+  <meta name="description" content="Create product descriptions and marketing copy with open-weight AI.">
+  <title>CraftCopy AI — Your products, better words.</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">✳</span>
+      CraftCopy<span class="brand-ai">AI</span>
+    </a>
+    <div class="nav-right">
+      <span class="open-badge"><span></span> Open AI powered</span>
+      <a href="#how-it-works" class="nav-link">How it works</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span>✦</span> MADE FOR SMALL BUSINESSES</div>
+      <h1>Your products deserve<br> <span>better words.</span></h1>
+      <p class="hero-text">
+        Turn your product ideas into compelling descriptions, social captions
+        and hashtags — powered by open AI, right in your browser.
+      </p>
+      <div class="hero-pills">
+        <span>✦ No paid API key</span>
+        <span>✦ Seller-friendly</span>
+        <span>✦ Privacy-first design</span>
+      </div>
+    </section>
+
+    <section class="workspace" id="generator">
+      <div class="form-panel">
+        <div class="section-heading">
+          <div>
+            <span class="step-label">STEP 01</span>
+            <h2>Tell us about your product</h2>
+          </div>
+          <span class="sparkle">✳</span>
+        </div>
+
+        <form id="copyForm">
+          <label for="productName">Product name <span>*</span></label>
+          <input id="productName" type="text"
+            placeholder="e.g. Handmade crochet flower bouquet" required
+            maxlength="120">
+
+          <div class="field-row">
+            <div>
+              <label for="category">Product category</label>
+              <select id="category">
+                <option>Handmade & crafts</option>
+                <option>Fashion & accessories</option>
+                <option>Jewellery</option>
+                <option>Beauty & skincare</option>
+                <option>Food & beverages</option>
+                <option>Home & decor</option>
+                <option>Gifts & hampers</option>
+                <option>Digital products</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="platform">Where will you sell?</label>
+              <select id="platform">
+                <option value="Instagram">Instagram</option>
+                <option value="Etsy">Etsy</option>
+                <option value="Shopify">Shopify</option>
+                <option value="WhatsApp">WhatsApp Business</option>
+                <option value="Website">My website</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="details">Product details <span>*</span></label>
+          <textarea id="details" rows="4" maxlength="1200"
+            placeholder="Materials, colours, size, customisation, who it's for, what makes it special..."
+            required></textarea>
+          <div class="input-note">Specific details help create more relevant copy.</div>
+
+          <div class="field-row">
+            <div>
+              <label for="tone">Brand voice</label>
+              <select id="tone">
+                <option value="Warm and friendly">Warm & friendly</option>
+                <option value="Cute and playful">Cute & playful</option>
+                <option value="Elegant and premium">Elegant & premium</option>
+                <option value="Minimal and professional">Minimal & professional</option>
+                <option value="Persuasive and sales-focused">Sales-focused</option>
+              </select>
+            </div>
+            <div>
+              <label for="audience">Target customer</label>
+              <select id="audience">
+                <option>Everyone who loves thoughtful gifts</option>
+                <option>Gen Z and college students</option>
+                <option>Gift shoppers</option>
+                <option>Small business customers</option>
+                <option>Premium buyers</option>
+                <option>Custom audience</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="goal">What do you want to generate?</label>
+          <select id="goal">
+            <option value="all">Complete product copy pack</option>
+            <option value="description">Product description</option>
+            <option value="caption">Social media caption</option>
+            <option value="title">Product title</option>
+            <option value="hashtags">Hashtags</option>
+          </select>
+
+          <button type="submit" id="generateBtn" class="primary-btn">
+            <span>✦</span> Generate with open AI <span class="arrow">↗</span>
+          </button>
+          <p class="form-footnote">Your product details are processed in your browser after the AI model loads.</p>
+        </form>
+      </div>
+
+      <div class="results-panel">
+        <div class="section-heading result-heading">
+          <div>
+            <span class="step-label">STEP 02</span>
+            <h2>Your copy studio</h2>
+          </div>
+          <span class="result-icon">✧</span>
+        </div>
+
+        <div id="welcomeState" class="welcome-state">
+          <div class="welcome-art">
+            <span class="art-star star-one">✦</span>
+            <span class="art-paper">Aa</span>
+            <span class="art-star star-two">✧</span>
+          </div>
+          <h3>Your next great listing starts here.</h3>
+          <p>Add your product details and let your AI copy partner help you find the words.</p>
+          <div class="mini-features">
+            <span>✎ Product descriptions</span>
+            <span>♡ Social captions</span>
+            <span># Discoverability tags</span>
+          </div>
+        </div>
+
+        <div id="loadingState" class="loading-state hidden" aria-live="polite">
+          <div class="loader"></div>
+          <h3 id="loadingTitle">Warming up your AI...</h3>
+          <p id="loadingText">The open-weight model may need to download the first time.</p>
+          <div class="progress-track"><div class="progress-bar"></div></div>
+          <p class="small-note">Keep this tab open while it works.</p>
+        </div>
+
+        <div id="errorState" class="error-state hidden" role="alert">
+          <h3>We couldn't generate your copy.</h3>
+          <p id="errorText">Check your connection and try again.</p>
+          <button id="retryBtn" class="secondary-btn" type="button">Try again</button>
+        </div>
+
+        <div id="results" class="results hidden" aria-live="polite">
+          <div class="result-meta">
+            <span class="result-status"><span></span> Generated copy</span>
+            <span id="resultPlatform"></span>
+          </div>
+          <div id="outputCards"></div>
+          <button id="copyAllBtn" class="primary-btn copy-all-btn" type="button">
+            Copy all results ↗
+          </button>
+          <button id="newCopyBtn" class="secondary-btn" type="button">
+            Create another version
+          </button>
+          <p class="small-note">Review facts, pricing and claims before publishing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-section" id="how-it-works">
+      <div class="eyebrow">WHY CRAFTCOPY AI?</div>
+      <h2>Small business tools shouldn't<br>come with big AI bills.</h2>
+      <div class="benefit-grid">
+        <article class="benefit-card">
+          <span class="benefit-icon">⌘</span>
+          <h3>Open by design</h3>
+          <p>Uses an open-weight model instead of relying on a paid, proprietary AI API.</p>
+        </article>
+        <article class="benefit-card">
+          <span class="benefit-icon">◉</span>
+          <h3>More control</h3>
+          <p>Build on replaceable models and adapt prompts to your customers and niche.</p>
+        </article>
+        <article class="benefit-card">
+          <span class="benefit-icon">♡</span>
+          <h3>Made for real sellers</h3>
+          <p>Helps independent makers spend less time writing and more time creating.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="challenge-note">
+      <span class="challenge-icon">✦</span>
+      <div>
+        <h3>Built for the Side Hustle challenge</h3>
+        <p>Open-weight AI. Practical value. A tool designed for people building something of their own.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="#">CraftCopy<span class="brand-ai">AI</span></a>
+    <p>Made for the makers, the dreamers and the doers. © 2026 CraftCopy AI</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
